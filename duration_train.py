@@ -91,7 +91,7 @@ def train():
     args = parse_args()
 
     # Set up Weights & Biases
-    wandb_run = setup_wandb()
+    wandb_run = setup_wandb(args)
 
     # Configure accelerate kwargs based on wandb availability
     accelerate_kwargs = {
