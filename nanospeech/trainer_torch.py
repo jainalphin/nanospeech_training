@@ -238,7 +238,7 @@ class NanospeechTrainer:
         while global_step < total_steps:
             self.model.train()
 
-            dataset = train_dataset.shuffle(seed=99 + epoch).filter(lambda x: x["json"]["duration"] <= 10.0)
+            dataset = train_dataset.shuffle(seed=99 + epoch)
 
             train_dataloader = DynamicBatchDataLoader(
                 dataset,
@@ -442,7 +442,7 @@ class DurationTrainer:
         while global_step < total_steps:
             self.model.train()
 
-            dataset = train_dataset.shuffle(seed=99 + epoch).filter(lambda x: x["json"]["duration"] <= 15.0)
+            dataset = train_dataset.shuffle(seed=99 + epoch)
 
             train_dataloader = DynamicBatchDataLoader(
                 dataset,
