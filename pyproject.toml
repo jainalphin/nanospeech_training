@@ -1,0 +1,61 @@
+[build-system]
+requires = [
+    "setuptools"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nanospeech"
+version = "0.0.6"
+authors = [{name = "Lucas Newman", email = "lucasnewman@me.com"}]
+license = {text = "MIT"}
+description = "Simple, hackable text-to-speech with PyTorch or MLX."
+readme = "README.md"
+keywords = [
+    "artificial intelligence",
+    "audio-generation",
+    "deep learning",
+    "mlx",
+    "transformers",
+    "text-to-speech",
+    "tts"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "einops",
+    "einx",
+    "ema-pytorch",
+    "huggingface_hub",
+    "numpy",
+    "safetensors",
+    "setuptools",
+    "sounddevice",
+    "soundfile",
+    "tqdm",
+    "torch",
+    "torchaudio",
+    "vocos"
+]
+
+[project.urls]
+Homepage = "https://github.com/lucasnewman/nanospeech"
+
+[tool.setuptools]
+packages = ["nanospeech"]
+
+[tool.setuptools.package-data]
+nanospeech = ["voices/*.wav", "voices/*.txt"]
+
+[dependency-groups]
+dev = ["gradio>=5.15.0"]
+mlx = ["mlx", "vocos-mlx"]
+
+[project.scripts]
+nanospeech = "nanospeech.generate:main"
