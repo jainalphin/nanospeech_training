@@ -2,7 +2,7 @@ import os
 import torch
 import sys
 from safetensors.torch import save_file
-from huggingface_hub import HfApi, HfFolder, RepositoryNotFoundError
+from huggingface_hub import HfApi, HfFolder
 from getpass import getpass
 import re
 import argparse
@@ -27,7 +27,7 @@ def get_hf_token():
     # Try Kaggle secrets
     try:
         from kaggle_secrets import UserSecretsClient
-        hf_token = UserSecretsClient().get_secret("HF_WRITE_TOKEN")
+        hf_token = UserSecretsClient().get_secret("HF_TOKEN")
         if hf_token:
             print("✅ Using Hugging Face token from Kaggle secrets")
             return hf_token
@@ -151,7 +151,7 @@ def upload_to_huggingface(model_space_name, files, hf_token):
         try:
             api.repo_info(repo_id, token=hf_token)
             print(f"ℹ️ Repository exists: {repo_id}")
-        except RepositoryNotFoundError:
+        except Exception as e:
             print(f"📁 Creating repository: {repo_id}")
             api.create_repo(repo_id, token=hf_token, private=False)
 
@@ -236,6 +236,7 @@ def main():
             output_files.append(out_path)
 
     # Upload to Hugging Face
+    output_files.append("vocab.txt")
     if output_files:
         upload_to_huggingface(model_space_name, output_files, hf_token)
     else:
