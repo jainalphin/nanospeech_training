@@ -157,7 +157,9 @@ class NanospeechTrainer:
         return self.accelerator.is_main_process
 
     def checkpoint_path(self, step: int):
-        return f"nanospeech_{step}.pt"
+        checkpoint_folder_path = "model/nanospeech"
+        os.makedirs(checkpoint_folder_path, exist_ok=True)
+        return f"{checkpoint_folder_path}/nanospeech_{step}.pt"        
 
     def save_checkpoint(self, step, finetune=False):
         self.accelerator.wait_for_everyone()
@@ -364,8 +366,10 @@ class DurationTrainer:
     def is_main(self):
         return self.accelerator.is_main_process
 
-    def checkpoint_path(self, step: int):
-        return f"duration_{step}.pt"
+    def checkpoint_path(self, step: int): 
+        checkpoint_folder_path = "model/duration"
+        os.makedirs(checkpoint_folder_path, exist_ok=True)
+        return f"{checkpoint_folder_path}/duration_{step}.pt"
 
     def save_checkpoint(self, step, finetune=False):
         self.accelerator.wait_for_everyone()
