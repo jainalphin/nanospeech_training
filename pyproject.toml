@@ -41,7 +41,8 @@ dependencies = [
     "tqdm",
     "torch",
     "torchaudio",
-    "vocos"
+    "vocos",
+    "wandb"
 ]
 
 [project.urls]
