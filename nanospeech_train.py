@@ -172,8 +172,7 @@ def train():
     try:
         dataset = load_dataset(
             args.dataset,
-            split="train",
-            streaming=True  # Configure the dataset for streaming for instant start
+            split="train",            
         )
         print(f"Dataset '{args.dataset}' loaded successfully")
     except Exception as e:
