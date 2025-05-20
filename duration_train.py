@@ -42,6 +42,9 @@ def parse_args():
                         help="Weights & Biases run name (default: auto-generated)")
     parser.add_argument("--no_wandb", action="store_true",
                         help="Disable Weights & Biases logging")
+    parser.add_argument("--restore_step", type=int, default=None,
+                        help="Last step to restore from, if any. If not specified, training will start from scratch.")
+
 
     # Model architecture arguments
     parser.add_argument("--dim", type=int, default=512,
@@ -176,6 +179,7 @@ def train():
         max_duration=max_duration,
         num_workers=args.num_workers,
         save_step=args.save_step,
+        restore_step=args.restore_step
     )
 
     # Close wandb run if active
