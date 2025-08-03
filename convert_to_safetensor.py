@@ -12,7 +12,7 @@ def get_latest_checkpoint(folder):
     return os.path.join(folder, pt_files[0]) if pt_files else None
 
 def convert_to_safetensors(pt_path, output_path):
-    print(f"🔄 Converting: {pt_path}")
+    print(f"Converting: {pt_path}")
     d = torch.load(pt_path, map_location="cpu")
     data = d['model_state_dict']
     for key in data:
@@ -30,11 +30,11 @@ nanospeech_ckpt = get_latest_checkpoint('model/nanospeech')
 if nanospeech_ckpt:
     convert_to_safetensors(nanospeech_ckpt, 'models/model.safetensors')
 else:
-    print("❌ No checkpoint found for nanospeech")
+    print("No checkpoint found for nanospeech")
 
 # Process duration
 duration_ckpt = get_latest_checkpoint('model/duration')
 if duration_ckpt:
     convert_to_safetensors(duration_ckpt, 'models/duration.safetensors')
 else:
-    print("❌ No checkpoint found for duration")
+    print("No checkpoint found for duration")
