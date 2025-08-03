@@ -1319,8 +1319,8 @@ class Nanospeech(nn.Module):
             duration_predictor = DurationPredictor(
                 transformer=DurationTransformer(
                     dim=512,
-                    depth=8,
-                    heads=12,
+                    depth=12,
+                    heads=8,
                     text_dim=512,
                     ff_mult=2,
                     conv_layers=0,

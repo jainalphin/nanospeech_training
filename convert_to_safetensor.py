@@ -23,7 +23,7 @@ def convert_to_safetensors(pt_path, output_path):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     save_file(data, output_path)
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
 
 # Process nanospeech
 nanospeech_ckpt = get_latest_checkpoint('model/nanospeech')

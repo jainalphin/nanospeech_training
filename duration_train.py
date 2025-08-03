@@ -49,9 +49,9 @@ def parse_args():
     # Model architecture arguments
     parser.add_argument("--dim", type=int, default=512,
                         help="Model embedding dimension")
-    parser.add_argument("--depth", type=int, default=8,
+    parser.add_argument("--depth", type=int, default=12,
                         help="Number of transformer layers")
-    parser.add_argument("--heads", type=int, default=12,
+    parser.add_argument("--heads", type=int, default=8,
                         help="Number of attention heads")
     parser.add_argument("--ff_mult", type=int, default=2,
                         help="Feed forward multiplier")
